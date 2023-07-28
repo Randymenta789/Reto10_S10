@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CorrutinaEnemigo3 : MonoBehaviour
 {
     public float velocidadMovimiento = 3f; // Velocidad de movimiento del personaje
@@ -11,6 +11,8 @@ public class CorrutinaEnemigo3 : MonoBehaviour
 
     void Start()
     {
+
+        
         puntosMovimiento = new Vector3[]
         {
         new Vector3(-5.27101469f,0,6.63000011f), // Punto inicial
@@ -55,4 +57,22 @@ public class CorrutinaEnemigo3 : MonoBehaviour
             indicePuntoActual++;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == ("Player"))
+        {
+            StartCoroutine(Reinicio());
+        }
+           
+    }
+
+
+IEnumerator Reinicio()
+{
+
+    yield return new WaitForSeconds(5);
+    SceneManager.LoadScene("Reto_1");
 }
+    }
+

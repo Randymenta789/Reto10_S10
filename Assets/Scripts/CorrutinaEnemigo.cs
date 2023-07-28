@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CorrutinaEnemigo : MonoBehaviour
 {
     public float velocidadMovimiento = 3f; // Velocidad de movimiento del personaje
@@ -55,5 +55,21 @@ public class CorrutinaEnemigo : MonoBehaviour
             indicePuntoActual++;
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == ("Player"))
+        {
+            StartCoroutine(Reinicio());
+        }
 
+    }
+
+
+    IEnumerator Reinicio()
+    {
+
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Reto_1");
+    }
 }
+
