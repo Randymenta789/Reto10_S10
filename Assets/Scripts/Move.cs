@@ -53,7 +53,12 @@ public class Move : MonoBehaviour
 
                 Destroy(gameObject);
             }
+        if (other.gameObject.tag == ("Cherry"))
+        {
 
-       
+            Destroy(this);
+        }
+
+
     }
 }
